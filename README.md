@@ -15,5 +15,5 @@ tabGrouper can be loaded into Firefox for testing by
 
 ## developer testing
 additionally, mozilla browser extensions can be temporarily opened via the commmand line by
-1. downloading the ```web-ext``` NPM package
+1. downloading the ```web-ext``` NPM package by running ```npm install -g web-ext```
 2. running ```web-ext run``` in the project's root folder
