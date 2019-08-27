@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "tabGrouper",
-    "version": "1.0",
+    "version": "1.0.1",
     "description": "Groups tabs together with the same domain",
 
     "icons": {
@@ -29,7 +29,7 @@
                 "default": "Ctrl+Shift+Y",
                 "linux": "Ctrl+Shift+U"
             },
-            "description": "Initiate grouping event"
+            "description": "send a grouping event"
         }
     }
 }
