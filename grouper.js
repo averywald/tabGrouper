@@ -32,18 +32,21 @@ function grouper(windowInfo) {
     // calls grouper function
 function driver() {
 
-    // get current tab
-    let current = browser.windows.getCurrent({ populate: true });
-    // call grouper function
-    current.then(grouper, onError);
+    // get current window and call grouper() on it
+    browser.windows.getCurrent({ populate: true }).then(grouper, onError);
 
 }
 
-// execute grouping on button click
+// execute grouping upon button click
 browser.browserAction.onClicked.addListener(driver);
 
-// execute grouping on key combo
+// execute grouper() upon key combo
 browser.commands.onCommand.addListener((cmd) => (cmd == 'toggle-feature') ? driver() : null);
 
-// execute grouping when a new tab is opened
-browser.tabs.onCreated.addListener(driver);
+// execute grouper() upon opening a new tab
+browser.tabs.onCreated.addListener(() => {
+
+    // only call grouper() when new tab is finished loading
+    browser.tabs.onUpdated.addListener(driver, { properties: ['status'] });
+
+});
