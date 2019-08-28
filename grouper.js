@@ -37,7 +37,7 @@ function driver() {
 
 }
 
-// execute grouping upon button click
+// execute grouper() upon button click
 browser.browserAction.onClicked.addListener(driver);
 
 // execute grouper() upon key combo
