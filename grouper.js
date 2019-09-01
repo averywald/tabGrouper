@@ -43,10 +43,5 @@ browser.browserAction.onClicked.addListener(driver);
 // execute grouper() upon key combo
 browser.commands.onCommand.addListener((cmd) => (cmd == 'toggle-feature') ? driver() : null);
 
-// execute grouper() upon opening a new tab
-browser.tabs.onCreated.addListener(() => {
-
-    // only call grouper() when new tab is finished loading
-    browser.tabs.onUpdated.addListener(driver, { properties: ['status'] });
-
-});
+// only call grouper() when new tab is finished loading
+browser.tabs.onUpdated.addListener(driver, { properties: ['status'] });
