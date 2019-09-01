@@ -14,17 +14,14 @@ function grouper(windowInfo) {
         onError('No active tabs...nothing for me to do');
     }
 
-    // sort tab objects
-    let newTabs = [...windowInfo.tabs].sort((a, b) => {
+    // sort tabs by url & recursively move all tabs to front in sorted order
+    browser.tabs.move([...windowInfo.tabs].sort((a, b) => {
         // strip http protocol from url strings
         let c = a.url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '');
         let d = b.url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '');
         // compare and return sort protocol
         return (c > d) ? 1 : -1;
-    });
-
-    // recursively move all tabs to front in sorted order
-    browser.tabs.move(newTabs.map(t => t.id), { index: -1 });
+    }).map(t => t.id), { index: -1 });
 
 }
 
